@@ -33,3 +33,15 @@ jobs:
           rustup toolchain install stable-aarch64-pc-windows-msvc
           rustup default stable-aarch64-pc-windows-msvc
           rustc -vV
+
+      - name: Clone Selenium Repository
+        shell: pwsh
+        run: |
+          git clone https://github.com/SeleniumHQ/selenium.git
+
+      - name: Build Selenium Rust crate
+        shell: pwsh
+        run: |
+          cd selenium\rust
+          cargo build --release
+
